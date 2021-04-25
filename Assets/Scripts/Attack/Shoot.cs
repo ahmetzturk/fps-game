@@ -10,21 +10,19 @@ namespace FPS.Attack
         [SerializeField] private float shootFrequency = 0.5f;
         [SerializeField] private BulletPool bulletPool = null;
         [SerializeField] private Transform firePoint = null;
-        private float lastShoot = 0.5f; 
+        [SerializeField] private Transform cameraPoint = null;
+        private float shootCounter = 0f;
 
-        void Update()
-        {
-            Fire();
-        }
+        public float ShootCounter { get => shootCounter; set => shootCounter = value; }
 
-        private void Fire()
+        public void Fire()
         {
-            if (Input.GetButton("Fire1") && lastShoot >= shootFrequency)
+            if (shootCounter <= 0)
             {
-                bulletPool.GetPoolObject(firePoint);              
-                lastShoot = 0;
+                bulletPool.GetPoolObject(firePoint, cameraPoint);
+                shootCounter = shootFrequency;
             }
-            lastShoot += Time.deltaTime;
+            shootCounter -= Time.deltaTime;
         }
     }
 }

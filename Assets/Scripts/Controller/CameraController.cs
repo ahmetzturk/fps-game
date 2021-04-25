@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FPS.Core
+namespace FPS.Controller
 {
     public class CameraController : MonoBehaviour
     {

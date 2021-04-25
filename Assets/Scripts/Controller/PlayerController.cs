@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using FPS.Attack;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FPS.Core
+namespace FPS.Controller
 {
     public class PlayerController : MonoBehaviour
     {
@@ -30,6 +31,10 @@ namespace FPS.Core
 
             // move the player
             Move();
+
+            // fire
+            if(Input.GetButton("Fire1"))
+                transform.GetComponent<Shoot>().Fire();
         }
 
         private void Move()
